@@ -388,9 +388,9 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
                     )
 
     def get_args(self):
-        hostname = self.get_hostname()
-        port = self.get_port()
-        username = self.get_value('username')
+        hostname = os.getenv('hostname', self.get_hostname())
+        port = os.getnev('port', self.get_port())
+        username = os.getenv('username', self.get_value('username'))
         password = self.get_argument('password', u'')
         privatekey, filename = self.get_privatekey()
         passphrase = self.get_argument('passphrase', u'')
